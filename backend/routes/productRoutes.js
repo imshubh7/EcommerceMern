@@ -9,7 +9,7 @@ import Product from "../models/productModel.js";
 //@route GET /api/products
 //@acces Public
 router.get(
-  '/',
+  "/",
   asyncHandler(async (req, res) => {
     const products = await Product.find({});
     res.json(products);
@@ -20,11 +20,11 @@ router.get(
 //@route GET /api/products/:id
 //@acces Public
 router.get(
-  '/:id',
+  "/:id",
   asyncHandler(async (req, res) => {
     if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-        res.status(404).json({ message: "Invalid Product Id" });
-        return ;
+      res.status(404).json({ message: "Invalid Product Id" });
+      return;
     }
 
     const product = await Product.findById(req.params.id);
@@ -32,7 +32,8 @@ router.get(
     if (product) {
       res.json(product);
     } else {
-      res.status(404).json({ message: "Product not found" });
+      res.status(404);
+      throw new Error("Product not found");
     }
   })
 );

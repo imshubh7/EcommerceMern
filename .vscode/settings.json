@@ -2,5 +2,7 @@
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
         ".vscode{,/**}"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/eea94984-ed00-41b6-a4c6-7d17bde4da96/AppServices/subscriptions/eea94984-ed00-41b6-a4c6-7d17bde4da96/resourceGroups/lldbreams_group/providers/Microsoft.Web/sites/lldbreams",
+    "appService.deploySubpath": "."
 }

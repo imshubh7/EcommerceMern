@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import Product from "../models/productModel.js";
+import { Configuration, OpenAIApi } from "openai";
 
 //@desc Fetch all products
 //@route GET /api/products
@@ -7,8 +8,23 @@ import Product from "../models/productModel.js";
 const getProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({});
   res.json(products);
-});
 
+  const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+  const openai = new OpenAIApi(configuration);
+  const response = await openai.createCompletion({
+    model: "text-davinci-002",
+    prompt: "solve the equation x^2 + 2x + 17=0",
+    temperature: 0.1,
+    max_tokens: 1000,
+    top_p: 1,
+    frequency_penalty: 0.5,
+    presence_penalty: 1,
+  });
+  console.log(response.data);
+  res.json(response.data.choices[0].text);
+});
 
 //@desc Fetch single products
 //@route GET /api/products/:id

@@ -8,7 +8,7 @@ const getAiScript = asyncHandler(async (req, res) => {
     const openai = new OpenAIApi(configuration);
     const response = await openai.createCompletion({
       model: "text-davinci-002",
-      prompt: "write 400 word script for a video on" + req.params.topic,
+      prompt: req.params.topic,
       temperature: 0.1,
       max_tokens: 1000,
       top_p: 1,

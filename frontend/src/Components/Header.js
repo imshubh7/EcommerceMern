@@ -32,7 +32,7 @@ const Header = () => {
               </Nav.Link>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
-                  <NavDropdown.Item onClick={() => navigate('/profile')}>
+                  <NavDropdown.Item onClick={() => navigate("/profile")}>
                     {userInfo.name}
                   </NavDropdown.Item>
 
@@ -44,6 +44,19 @@ const Header = () => {
                 <Nav.Link as={NavLink} to="/login">
                   <i className="fas fa-user"></i>Sign In
                 </Nav.Link>
+              )}
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin' id="adminmenu">
+                  <NavDropdown.Item onClick={() => navigate("/admin/userlist")}>
+                    Users
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => navigate("/admin/productlist")}>
+                    Products
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => navigate("/admin/orderlist")}>
+                    Orders
+                  </NavDropdown.Item>
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>

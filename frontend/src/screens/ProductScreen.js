@@ -49,7 +49,7 @@ const ProductScreen = () => {
         <Row>
           <Col md={6}>
             <Image
-              src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MQD83?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1660803972361"
+              src={product.image}
               alt={product.name}
               fluid
             />

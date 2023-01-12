@@ -1,5 +1,4 @@
 import express from "express";
-import { getAiScript } from "../controllers/aiScriptController.js";
 const router = express.Router();
 import {
   authUser,
@@ -19,7 +18,6 @@ router
   .route("/profile")
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
-router.route("/ai/:topic").get(getAiScript);
 router
   .route("/:id")
   .delete(protect, admin, deleteUser)
